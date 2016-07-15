@@ -20,5 +20,8 @@ let g:unite_source_outline_highlight = {
 \ }
 
 let g:unite_outline_closest_tag = ''
-command! UniteOutlineClosestTag echo config_unite_outline#closest_tag()
-autocmd CursorHold * let g:unite_outline_closest_tag = config_unite_outline#closest_tag()
+command! UniteOutlineEchoClosestTag echo config_unite_outline#closest_tag()
+command! UniteOutlineSetClosestTag let g:unite_outline_closest_tag = config_unite_outline#closest_tag()
+command! UniteOutlineClearClosestTag let g:unite_outline_closest_tag = ''
+autocmd CursorMoved * UniteOutlineClearClosestTag
+nnoremap <silent> <Esc> :UniteOutlineSetClosestTag<CR>
