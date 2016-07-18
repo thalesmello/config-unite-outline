@@ -28,4 +28,4 @@ command! UniteOutlineSetClosestTag let g:unite_outline_closest_tag = config_unit
 command! UniteOutlineClearClosestTag let g:unite_outline_closest_tag = ''
 autocmd CursorMoved * UniteOutlineClearClosestTag
 autocmd BufWrite * let g:unite_outline_should_update = 1
-nnoremap <silent> <Esc> :UniteOutlineSetClosestTag<CR>
+nnoremap <silent> <leader>? :UniteOutlineSetClosestTag<CR>
