@@ -3,7 +3,13 @@ function! config_unite_outline#closest_tag()
       return ''
    endif
 
-   silent let candidates = unite#get_candidates(['outline'])
+   if g:unite_outline_should_update
+      silent let candidates = unite#get_candidates([['outline', '!']])
+   else
+      silent let candidates = unite#get_candidates(['outline'])
+   endif
+
+   let g:unite_outline_should_update = 0
 
    if empty(candidates)
       return ''
@@ -29,6 +35,7 @@ function! config_unite_outline#closest_tag()
 
       let prevword = candidate.word
    endfor
+
 
    return prevtag
 endfunction
