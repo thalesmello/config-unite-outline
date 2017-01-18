@@ -26,6 +26,10 @@ let g:unite_outline_closest_tag = ''
 command! UniteOutlineEchoClosestTag echo config_unite_outline#closest_tag()
 command! UniteOutlineSetClosestTag let g:unite_outline_closest_tag = config_unite_outline#closest_tag()
 command! UniteOutlineClearClosestTag let g:unite_outline_closest_tag = ''
-autocmd CursorMoved * UniteOutlineClearClosestTag
-autocmd BufWrite * let g:unite_outline_should_update = 1
+augroup unite_outline_config
+  autocmd!
+  autocmd CursorMoved * UniteOutlineClearClosestTag
+  autocmd BufWrite * let g:unite_outline_should_update = 1
+augroup end
+
 nnoremap <silent> <leader>? :UniteOutlineSetClosestTag<CR>
